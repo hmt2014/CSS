@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place dom centered by css</title>
+    <style type="text/css">
+        .outer{
+            position: relative;
+            background-color:#999999;
+            margin:20px 0;
+            height: 500px;
+            width: 100%;
+        }
+        #fixedWidthHeight{
+            background-color: darkred;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width:200px;
+            height:100px;
+            margin-left:-100px;
+            margin-top:-50px;
+        }
+
+        /* This parent can be any width and height */
+        .block {
+            text-align: center;
+            background-color: wheat;
+        }
+
+        /* The ghost, nudged to maintain perfect centering */
+        .block:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em; /* Adjusts for spacing */
+        }
+
+        /* The element to be centered, can
+           also be of any width and height */
+        .centered {
+            display: inline-block;
+            vertical-align: middle;
+            width: 50%;
+            background-color: green;
+        }
+        /*table*/
+        .something-semantic {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            width: 50%;
+        }
+        .translate_cneter{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background-color: #000;
+            width:50%;
+            height: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+        }
+        /*css3*/
+        .outer.css3{
+            justify-content: center;
+            align-items: center;
+            display: -webkit-flex;
+        }
+        .outer.css3 .inner{
+            width: 50%;
+            height: 50%;
+            background-color: green;
+        }
+        /*margin:auto*/
+        .outer.margin{
+            position:relative;
+            width:100%;
+            top:0;
+            left:0;
+            background-color:rgba(0,0,0,.7);
+        }
+        .outer.margin .inner{
+            position: absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            width:50%;
+            height:50%;
+            margin:auto;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="des">Fixed width and height</div>
+<div class="outer">
+    <div id="fixedWidthHeight"></div>
+</div>
+<div class="des">Unknown width and height</div>
+<div class="block" style="height: 300px;">
+    <div class="centered">
+        Use ghost
+    </div>
+</div>
+<div class="outer" style="display:table">
+    <div class="something-semantic">
+            Unknown stuff to be centered.
+    </div>
+</div>
+<div class="outer">
+    <div class="translate_cneter" style="color:white">transform</div>
+</div>
+<div class="outer css3">
+    <div class="inner">CSS3 Flex</div>
+</div>
+<div class="outer margin">
+    <div class="inner">margin:auto</div>
+</div>
+</body>
+</html>
